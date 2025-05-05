@@ -58,7 +58,7 @@ I injected a fault where Math.min() was changed to Math.max().
 The test case k = 2, list{4, 6, 8} failed after.
 What ended up happening was that the function incorrectly processed more elements than it should have.
 
-I fixed it by reverting the line 
+I fixed it by changing the line 
 int n = Math.max(k, list.length) back to Math.min(k, list.length).
 
 
