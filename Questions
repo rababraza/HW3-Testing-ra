@@ -1,1 +1,67 @@
-This is called the Average class. Within the Average class, there is an average function which computes the average, the arithmetic mean, of the first k elements in the integer array called list. In this case, if k is greater than the length of the array, it will compute the average of all of the elements. Now, if the array is empty, OR k is zero or negative, then the function will return 0. 
+
+    Write a brief functional description for the function.
+
+This is called the Average class. 
+Within the Average class, there is an average function which computes the average, the arithmetic mean, of the first k elements in the integer array called list. 
+In this case, if k is greater than the length of the array, it will compute the average of all of the elements. 
+Now, if the array is empty, OR k is zero or negative, then the function will return 0. 
+
+    Generate functional test case based on functional description
+
+list = {3, 9, 6}
+Input: k = 7
+Expected Output: (3 + 9 + 6) / 3 = 6
+
+    Identify and specify the partitions and generate partition test cases.
+
+
+Partitions    Description              Conditions
+P1            k is an Empty list       list.length == 0
+P2            k = 0                    No elements will be averaged
+P3            k = 1                    Only one element is averaged
+P4            k == list.length         All the elements will be averaged
+P5            k < list.length          The first k elements will be averaged
+P6            k > list.length          All elements in the list will be averaged
+
+
+Test Case    k     list             Expect Output
+P1 = TC1     4     {}               0
+P2 = TC2     0     {10, 20, 30}     0
+P3 = TC3     1     {10}             10
+P4 = TC4     3     {2, 4, 6}        4
+P5 = TC5     2     {4, 6, 8}        5
+P6 = TC6     7     {3, 9, 6}        6
+
+
+
+    Generate boundary value test cases.
+
+
+Test Case    k    list           Expected Output    Reason
+BV1          0    {5, 10, 15}    0                  No elements are averaged
+BV2          1    {8, 12, 16}    8                  Only the first element is averaged
+BV3          2    {4, 6, 8}      5                  k = list.length - 1
+BV4          3    {2, 4, 6}      4                  k = list.length - 1, Will average all elements
+
+
+    (Implement the average function in a class Average and generate test cases using Junit. (Please also submit this part of the assignment in your individual GitHub classroom code)
+
+Submitted on Code tab
+
+    Compile and run the test cases. Record any failures and errors that are reported. 
+    Analyze and briefly explain why each of the failures and errors occurs and how you fix them. 
+    Correct all the failures and errors until the CUT (Component Under Test) passes all the test cases.
+
+
+I experienced no failures/errors in the code.
+I injected a fault where Math.min() was changed to Math.max(). 
+The test case k = 2, list{4, 6, 8} failed after.
+What ended up happening was that the function incorrectly processed more elements than it should have.
+
+I fixed it by reverting the line 
+int n = Math.max(k, list.length) back to Math.min(k, list.length).
+
+
+
+
+
